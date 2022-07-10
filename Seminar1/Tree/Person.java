@@ -1,6 +1,6 @@
 
 class Person {
-    public String fullName;
+    private String fullName;
 
     public String getFullName() {
         return fullName;
