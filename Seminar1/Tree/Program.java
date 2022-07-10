@@ -14,9 +14,9 @@ public class Program {
         gt.append(vasya, jane);
         gt.append(vasya, ivan);
         Reserch reserch = new Reserch(gt);
-        reserch.printSearch(jane, Relationship.parent);
+        reserch.printSearch(jane, Relationship.PARENT);
         System.out.println();
-        reserch.printSearch(kesha, Relationship.parent);
+        reserch.printSearch(kesha, Relationship.PARENT);
 
     }
 }

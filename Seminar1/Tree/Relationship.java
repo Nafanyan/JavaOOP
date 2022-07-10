@@ -1,4 +1,4 @@
 public enum Relationship {
-    parent,
-    children
+    PARENT,
+    CHILDREN
 }
