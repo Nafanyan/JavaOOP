@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class GeoTree {
+public class GeoTree implements GeoTreeable{
     private ArrayList<Node> tree = new ArrayList<>();
 
     public ArrayList<Node> getTree() {
@@ -12,7 +12,4 @@ public class GeoTree {
         tree.add(new Node(children, Relationship.children, parent));
     }
 
-    public void appendBS(){
-
-    }
 }

@@ -2,9 +2,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
 public class Reserch {
-    ArrayList<Node> tree;
+    private ArrayList<Node> tree;
 
     public Reserch(GeoTree geoTree) {
         tree = geoTree.getTree();
