@@ -1,10 +1,9 @@
 import java.util.HashMap;
 
-public abstract class Mage {
+public abstract class Mage extends All{
     protected int mana;
     protected int maxMana;
-    protected int hp;
-    protected int maxHp;
+
     protected int xp;
     protected int nowLevel;
     protected String specialization;
@@ -12,6 +11,7 @@ public abstract class Mage {
     protected int[] levelScale = new int[100];
 
     Mage() {
+        super();
         xp = 0;
         nowLevel = 1;
         for (int i = 1; i < levelScale.length; i++) {
@@ -20,7 +20,7 @@ public abstract class Mage {
     }
 
     protected void castingMana(int needMane) {
-        if (!manaEmpty()) {
+        if (!manaEmpty(needMane)) {
             mana -= needMane;
             xp += (int) (needMane * 0.05);
             xp = madeNewLevel(xp);
@@ -29,8 +29,16 @@ public abstract class Mage {
         }
     }
 
-    protected boolean manaEmpty() {
-        return mana <= 0;
+    protected boolean manaEmpty(int needMana) {
+        return mana <= 0 || mana < needMana;
+    }
+
+    protected void castDamage(int damage, All target){
+        target.hp = target.hp - damage;
+        if (target.die()){
+            System.out.println("Target die.");
+            System.out.println();
+        }
     }
 
     protected int madeNewLevel(int nowXp) {
