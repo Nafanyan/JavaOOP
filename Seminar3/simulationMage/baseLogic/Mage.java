@@ -1,12 +1,13 @@
 package baseLogic;
+
 import java.util.HashMap;
 
-public abstract class Mage extends allObject{
+public abstract class Mage extends AllObject {
     protected int mana;
     protected int maxMana;
     protected int xp;
-    protected String specialization;
     protected int manaForce;
+    protected String specialization;
     protected HashMap<String, Integer> skillBranch = new HashMap<>();
     protected int[] levelScale = new int[100];
 
@@ -20,7 +21,7 @@ public abstract class Mage extends allObject{
         }
     }
 
-    protected void castingMana(int needMane){
+    protected void castingMana(int needMane) {
         if (!manaEmpty(needMane)) {
             mana -= needMane;
         } else {
@@ -33,17 +34,17 @@ public abstract class Mage extends allObject{
     }
 
     @Override
-    protected void castDamage(int damage, allObject target){
+    protected void castDamage(int damage, AllObject target) {
         damage = target.recieveDamage(damage);
         target.hp = target.hp - damage;
-        if (target.die()){
+        if (target.die()) {
             xp += target.xpForDie();
             System.out.println(target.name + " die.");
             System.out.println();
             xp = madeNewLevel(xp);
+            target.hp = 0;
         }
     }
-
 
     protected int madeNewLevel(int nowXp) {
         if (nowXp >= levelScale[nowLevel]) {
@@ -66,17 +67,19 @@ public abstract class Mage extends allObject{
         hp += 10;
     }
 
-    public void getInfo() {
+    @Override
+    public String toString() {
         String info = new String();
-        info = String.format("Specialization - %s \nHp - %d, mana - %d \nLevel - %d", specialization,
+        info = String.format("\nSpecialization - %s \nHp - %d, mana - %d \nLevel - %d", specialization,
                 hp, mana, nowLevel);
-        System.out.println(info);
-        System.out.println("Now xp - " + xp);
-        System.out.println("Up to a new level of " + (levelScale[nowLevel] - xp) + " units of experience");
-        System.out.println();
+        info += "\nNow xp - " + xp;
+        info += "\nUp to a new level of " + (levelScale[nowLevel] - xp) + " units of experience";
+        return info;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see All#xpForDie()
      */
     @Override
@@ -84,9 +87,5 @@ public abstract class Mage extends allObject{
         return this.nowLevel + (int) (this.maxHp * 0.5);
     }
 
-    @Override
-    int recieveDamage(int damage) {
-        return damage - (int)(damage * resistance / 100);
-        
-    }
+
 }

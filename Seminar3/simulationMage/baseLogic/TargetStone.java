@@ -1,5 +1,6 @@
 package baseLogic;
-public class TargetStone extends allObject {
+
+public class TargetStone extends AllObject {
     public TargetStone() {
         super();
         name = "Target Stone";
@@ -21,10 +22,6 @@ public class TargetStone extends allObject {
     }
 
     @Override
-    void castDamage(int damage, allObject target) {}
+    void castDamage(int damage, AllObject target) {}
 
-    @Override
-    int recieveDamage(int damage) {
-        return 0;
-    }
 }

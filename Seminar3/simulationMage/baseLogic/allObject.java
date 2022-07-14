@@ -1,15 +1,19 @@
 package baseLogic;
 
- public abstract class allObject {
+ public abstract class AllObject {
     public String name;
     protected int hp;
     protected int maxHp;
-    protected int resistance; // max value 100 == 100%
+    protected int resistance = 0; // max value 100 == 100%
     protected int nowLevel;
     
     abstract int xpForDie();
-    abstract int recieveDamage(int damage);
-    abstract void castDamage(int damage, allObject target);
+    abstract void castDamage(int damage, AllObject target);
+    
+    int recieveDamage(int damage) {
+        return damage - (int) (damage * resistance / 100);
+    }
+    
 
     boolean die(){
         return hp <= 0;
