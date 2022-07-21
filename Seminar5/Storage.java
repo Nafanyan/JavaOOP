@@ -1,3 +1,5 @@
+package Seminar5;
+
 interface Storage {
 
     void addMsg(String msg, String user);

@@ -1,3 +1,5 @@
+package Seminar5;
+
 public class Program {
     public static void main(String[] args) {
         Client client1 = new Client("Ilya");
