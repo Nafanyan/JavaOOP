@@ -14,8 +14,8 @@ public class Reserch {
         Queue<Person> result = new LinkedList<Person>();
         result.add(p);
         for (Node node : tree) {
-            if(node.p1 == p && node.re == rel){
-                result.add(node.p2);
+            if(node.person1 == p && node.re == rel){
+                result.add(node.person2);
             }
         }
         return result;
@@ -23,12 +23,12 @@ public class Reserch {
 
     public void printSearch(Person p, Relationship rel){
         Queue<Person> source = search(p, rel);
-        System.out.println(source.poll().fullName + " " + rel + ":");
+        System.out.println(source.poll().getFullName() + " " + rel + ":");
         if(source.isEmpty()){
             System.out.println("Missing in the database.");
         }
         for (Person person : source) {
-            System.out.println(" " + person.fullName);
+            System.out.println(" " + person.getFullName());
         }
     }
 }
